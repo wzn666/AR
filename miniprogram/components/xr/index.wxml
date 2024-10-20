@@ -1,0 +1,17 @@
+<!--components/hh/index.wxml-->
+<xr-scene bind:ready="handleReady"  bind:tick="handleTick">
+  <xr-assets bind:loaded="handleAssetsLoaded">
+    <xr-asset-load type="gltf" asset-id="damage-helmet" bindload="onModelLoad" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/damage-helmet/index.glb" />
+    <xr-asset-load type="gltf" asset-id="miku" bindload="onModelLoad" src="https://bbsgogo.oss-cn-beijing.aliyuncs.com/xiaoxiongmao.glb?Expires=1729067119&OSSAccessKeyId=TMP.3KiGmRpuyJuFCuxMDYhXYxYkde68s3wf4xwoydHUpMUUZ2F15WmBMLcxsozzReJuroUX3kCrFsov8KzySQJqeZvpEwEMQ4&Signature=7%2BtFgIBW%2F5gnUyFOPDwbPLPeD78%3D" />
+    <!-- <xr-asset-load type="gltf" asset-id="miku" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/miku.glb" /> -->
+  </xr-assets>
+  <xr-env env-data="xr-frame-team-workspace-day" />
+  <xr-light type="ambient" color="1 1 1" intensity="1" />
+  <xr-light type="directional" rotation="40 70 0" color="1 1 1" intensity="3" cast-shadow />
+
+  <xr-gltf node-id="damage-helmet" model="damage-helmet"  id="helmet" mesh-shape bind:touch-shape="handleTouchModel" />
+  
+  <xr-gltf model="miku" position="0 1 0" scale="1 1 1" id="miku" shape-gizmo bind:touch-shape="handleTouchModel" />
+
+  <xr-camera id="camera" clear-color="0.4 0.8 0.6 1" position="0 2 4" target="damage-helmet" background="skybox" camera-orbit-control />
+</xr-scene>
